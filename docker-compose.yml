@@ -1,0 +1,16 @@
+# https://docs.docker.com/compose/gettingstarted/
+# https://docs.docker.com/compose/compose-file/
+version: "3"
+services:
+  ticket-reservation:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - "9100:9100"
+    volumes:
+      - /opt/logs:/opt/logs
+    env_file:
+      - .env
+    network_mode: host
+    container_name: ticket-reservation-component
